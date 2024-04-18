@@ -1,0 +1,31 @@
+preprocessing:
+  raw_data_path: ../data/raw/
+  interim_data_path: ../data/interim/
+  img_path_proc: ../data/processed/train/
+  train_path_proc: ../data/processed/train.csv
+
+train:
+  target_column: label
+  n_class: 6
+  img_size: 224
+  channels: 3
+  batch_size: 64
+  random_state: 10
+  test_size: 0.2
+  val_size: 0.16
+  n_epoch_train: 15
+  n_epoch_fine: 1
+  class_weights_path: ../report/class_weights.json
+  label_map_path: ../report/label_map.json
+  model_path: ../models/model_fine.weights.h5
+  history_path: ../report/history.csv
+  metrics_path: ../report/metrics.json
+
+prediction:
+  predict_path: ../data/check/
+
+endpoints:
+  # train: "http://fastapi:8000/train"
+  # prediction_from_file: "http://fastapi:8000/predict"
+  train: "http://localhost:8000/train"
+  prediction_from_file: "http://localhost:8000/predict"
